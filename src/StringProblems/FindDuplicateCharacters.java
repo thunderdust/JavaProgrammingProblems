@@ -1,3 +1,4 @@
+package StringProblems;
 /* Description: Enter a string, return with duplicate characters and times of occurrence. */
 
 import java.util.HashMap;

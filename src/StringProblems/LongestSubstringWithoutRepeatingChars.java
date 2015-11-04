@@ -1,3 +1,4 @@
+package StringProblems;
 import java.util.HashMap;
 import java.util.Map;
 

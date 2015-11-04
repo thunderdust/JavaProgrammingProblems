@@ -1,3 +1,4 @@
+package StringProblems;
 import java.util.HashSet;
 
 /* Given a string, permute all the combinations of the characters from the string. 

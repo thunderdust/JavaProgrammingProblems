@@ -1,3 +1,4 @@
+package StringProblems;
 /* Given a string, permute all the combinations of the characters from the string. 
  * Assuming there is no duplicated characters in the string. */
 

@@ -1,3 +1,4 @@
+package StringProblems;
 /* Given a string, return the longest substring of it which is palindrome. */
 
 public class FindLongestPalindromeSubstring {
