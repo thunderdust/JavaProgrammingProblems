@@ -1,7 +1,10 @@
 package StringProblems;
+
 import java.util.Scanner;
 
-/* Check if a given string is palindrome */
+/* Check if a given string is palindrome
+ * Assuming only alphanumeric characters 
+ * and no space no case difference. */
 
 public class CheckPalindrome {
 
