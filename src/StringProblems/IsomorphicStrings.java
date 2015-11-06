@@ -43,6 +43,8 @@ public class IsomorphicStrings {
 	}
 
 	public static boolean isIsomorphic(String s1, String s2) {
+		
+		
 
 		if (s1 == null || s2 == null || s1.length() == 0 || s2.length() == 0) {
 			return true;
