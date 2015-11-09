@@ -1,27 +1,14 @@
 package StringProblems;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Stack;
 
-/* Given a string containing just the characters '(', ')', '{', '}', '[' and ']', 
- * determine if the input string is valid. 
- * The brackets must close in the correct order, "()" and "()[]{}" are all valid 
- * but "(]" and "([)]" are not. */
-
-public class ValidParentheses {
-
-	public static void main(String args[]) {
-
-		String s1 = "{}[]()";
-		String s2 = "([)]";
-		String s3 = "{([])}";
-
-		String result1 = isValid(s1) ? " is a valid parenthese. " : "is NOT valid";
-		String result2 = isValid(s2) ? " is a valid parenthese. " : "is NOT valid";
-		String result3 = isValid(s3) ? " is a valid parenthese. " : "is NOT valid";
-		System.out.println(s1 + result1);
-		System.out.println(s2 + result2);
-		System.out.println(s3 + result3);
+public class RemoveInvalidParentheses {
+	
+	
+	public static List<String> removeInvalidParentheses(String s){
+		return null;
 	}
 
 	public static boolean isValid(String s) {
@@ -50,7 +37,9 @@ public class ValidParentheses {
 					return false;
 				}
 			}
-
+			else {
+				// other characters
+			}
 		}
 		return stack.empty();
 	}

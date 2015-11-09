@@ -43,8 +43,7 @@ public class StringPermutationWithDuplicateChars {
 				else {
 					charSet.add(sample.charAt(i));
 					permute(prefix+sample.charAt(i), sample.substring(0, i)+sample.substring(i+1, sample.length()));
-				}
-				
+				}	
 			}
 		}
 	}
