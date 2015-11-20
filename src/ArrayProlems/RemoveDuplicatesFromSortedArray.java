@@ -1,5 +1,7 @@
 package ArrayProlems;
 
+import java.util.Arrays;
+
 /* Given a sorted array, remove the duplicates in place such that each element appear 
  * only once and return the new length. Do not allocate extra space for another array, 
  * you must do this in place with constant memory.
@@ -12,21 +14,21 @@ public class RemoveDuplicatesFromSortedArray {
 
 	}
 
-	public static int[] removeDuplicates(int[] A) {
+	public static int removeDuplicates(int[] A) {
 		if (A.length < 2) {
-			return A;
+			return A.length;
 		}
 		int current = 0;
 		int next = current + 1;
 		while (next < A.length) {
 			if (A[current] == A[next]) {
 				next++;
-			}
-			else {
-				current ++;
+			} else {
+				current++;
 				A[current] = A[next];
-				next ++;
+				next++;
 			}
 		}
 	}
 }
+
