@@ -15,7 +15,7 @@ public class TwoSum {
 
 	public static void main(String args[]) {
 		int[] numbers = { 2, 7, 11, 15, -3, 2, 8 };
-		int target = -1;
+		int target = 4;
 		int[] answer = twoSum(numbers, target);
 		System.out.println("index1: " + answer[0] + " index2: " + answer[1]);
 	}
