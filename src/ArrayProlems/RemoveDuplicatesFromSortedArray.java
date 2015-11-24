@@ -12,23 +12,47 @@ public class RemoveDuplicatesFromSortedArray {
 
 	public static void main(String args[]) {
 
+		int[] arr = { 1, 2, 2, 3, 3 };
+		int length = removeDuplicates(arr);
+		int length2 = countUnique(arr);
+		System.out.println(length);
+		System.out.println(length2);
+
 	}
 
 	public static int removeDuplicates(int[] A) {
-		if (A.length < 2) {
+
+		if (A.length < 2)
 			return A.length;
-		}
-		int current = 0;
-		int next = current + 1;
-		while (next < A.length) {
-			if (A[current] == A[next]) {
-				next++;
+
+		int j = 0;
+		int i = 1;
+
+		while (i < A.length) {
+			if (A[i] == A[j]) {
+				i++;
 			} else {
-				current++;
-				A[current] = A[next];
-				next++;
+				j++;
+				A[j] = A[i];
+				i++;
 			}
 		}
+		int[] B = Arrays.copyOf(A, j + 1);
+		return B.length;
 	}
-}
 
+	/*
+	 * If we only want to count the number of unique elements, the following
+	 * method is good enough.
+	 */
+	public static int countUnique(int[] A) {
+		int count = 0;
+		for (int i = 0; i < A.length - 1; i++) {
+			if (A[i] == A[i + 1]) {
+				count++;
+			}
+		}
+		return (A.length - count);
+	}
+
+}
