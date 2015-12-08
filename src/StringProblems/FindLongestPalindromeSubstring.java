@@ -18,7 +18,7 @@ public class FindLongestPalindromeSubstring {
 	public static String longestPalindromeString(String sample) {
 		
 		if (sample.length()==0 || sample.length()==1 || sample.trim().length()==0){
-			System.out.println("Direct return");
+			//System.out.println("Direct return");
 			return sample;
 		}
 		
