@@ -9,12 +9,12 @@ package ArrayProlems;
 public class SearchForARange {
 
 	public static void main(String args[]) {
-		int[] test = { 5, 7, 7, 8, 8, 10 };
+		int[] test = { 5, 7, 7, 8, 8, 8, 10 };
 		int[] result = new int[2];
 		int target = 8;
 		result = searchRange(test, target);
 		for (Integer index : result) {
-			System.out.print(index+" ");
+			System.out.print(index + " ");
 		}
 	}
 
@@ -24,35 +24,54 @@ public class SearchForARange {
 			return null;
 		}
 
-		return binarySearch(nums, target);
-	}
-
-	public static int[] binarySearch(int[] nums, int target) {
-
-		int startIndex = (nums.length - 1) / 2;
 		int[] result = new int[2];
-		while (startIndex >= 0 && startIndex < nums.length) {
-			if (nums[startIndex] == target) {
-				int pointer1 = startIndex;
-				int pointer2 = startIndex;
+		result[0] = -1;
+		result[1] = -1;
 
-				while (pointer1 >= 0 && nums[pointer1] == target) {
-					pointer1--;
-				}
-				result[0] = pointer1 + 1;
+		if (nums.length == 1) {
 
-				while (pointer2 < nums.length && nums[pointer2] == target) {
-					pointer1++;
-				}
-				result[1] = pointer2 - 1;
+			if (nums[0] == target) {
+				result[0] = 0;
+				result[1] = 0;
 				return result;
-			} else if (nums[startIndex] > target) {
-				startIndex = (startIndex + nums.length - 1) / 2;
-			} else if (nums[startIndex] < target) {
-				startIndex = startIndex / 2;
+			} else {
+				return result;
 			}
 		}
-		result[0] = result[1] = -1;
+
+		binarySearch(nums, target, result, 0, nums.length - 1);
 		return result;
+	}
+
+	public static void binarySearch(int[] nums, int target, int[] result, int left, int right) {
+		if (right < left)
+			return;
+		if (nums[left] == nums[right] && nums[left] == target) {
+			result[0] = left;
+			result[1] = right;
+			return;
+		}
+		int mid = left + (right - left) / 2;
+
+		if (nums[mid] < target) {
+			binarySearch(nums, target, result, mid + 1, right);
+		} else if (nums[mid] > target) {
+			binarySearch(nums, target, result, left, mid - 1);
+		} else {
+			result[0] = mid;
+			result[1] = mid;
+			int pointer1 = mid;
+			while (pointer1 >= left && nums[pointer1] == target) {
+				result[0] = pointer1;
+				pointer1--;
+			}
+
+			int pointer2 = mid;
+			while (pointer2 <= right && nums[pointer2] == target) {
+				result[1] = pointer2;
+				pointer2++;
+			}
+			return;
+		}
 	}
 }
