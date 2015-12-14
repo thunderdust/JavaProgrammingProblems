@@ -1,46 +1,56 @@
 package StringProblems;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Stack;
+
+/* emove the minimum number of invalid parentheses in order to make the input 
+ * string valid. Return all possible results. Note: The input string may 
+ * contain letters other than the parentheses ( and ).
+ * Examples:
+ * "()())()" -> ["()()()", "(())()"]
+ * "(a)())()" -> ["(a)()()", "(a())()"]
+ * ")(" -> [""] */
 
 public class RemoveInvalidParentheses {
-	
-	
-	public static List<String> removeInvalidParentheses(String s){
-		return null;
+
+	ArrayList<String> result = new ArrayList<String>();
+	int max = 0;
+
+	public List<String> removeInvalidParentheses(String s) {
+		dfs(s, "", 0, 0);
+		if (result.size() == 0) {
+			result.add("");
+		}
+		return result;
 	}
 
-	public static boolean isValid(String s) {
-
-		HashMap<Character, Character> parentheseMap = new HashMap<Character, Character>();
-		parentheseMap.put('(', ')');
-		parentheseMap.put('{', '}');
-		parentheseMap.put('[', ']');
-		Stack<Character> stack = new Stack<Character>();
-
-		for (int i = 0; i < s.length(); i++) {
-			char current = s.charAt(i);
-			// if open bracket
-			if (parentheseMap.keySet().contains(current)) {
-				stack.push(current);
-			}
-			// if close bracket
-			else if (parentheseMap.values().contains(current)) {
-				// if current char is a closing bracket for the last open
-				// bracket
-				if (!stack.isEmpty() && parentheseMap.get(stack.peek()) == current) {
-					// close this bracket by removing the opening bracket from
-					// the stack
-					stack.pop();
-				} else {
-					return false;
+	public void dfs(String str, String subRes, int countLeft, int maxLeft) {
+		if (str.length() == 0) {
+			if (countLeft == 0 && subRes.length() != 0) {
+				if (maxLeft > max) {
+					max = maxLeft;
+				}
+				if (max == maxLeft && !result.contains(subRes)) {
+					result.add(subRes.toString());
 				}
 			}
-			else {
-				// other characters
-			}
+			return;
 		}
-		return stack.empty();
+		if (str.charAt(0) == '(') {
+			dfs(str.substring(1), subRes.concat("("), countLeft + 1, maxLeft + 1);
+			dfs(str.substring(1), subRes, countLeft, maxLeft);
+		} else if (str.charAt(0) == ')') {
+			// open bracket available
+			if (countLeft > 0) {
+				dfs(str.substring(1), subRes.concat(")"), countLeft - 1, maxLeft);
+			}
+			dfs(str.substring(1), subRes, countLeft, maxLeft);
+		}
+		// Other characters
+		else {
+			dfs(str.substring(1), subRes.concat(String.valueOf(str.charAt(0))), countLeft, maxLeft);
+		}
 	}
+
 }
