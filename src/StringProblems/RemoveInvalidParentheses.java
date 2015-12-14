@@ -43,7 +43,7 @@ public class RemoveInvalidParentheses {
 		} else if (str.charAt(0) == ')') {
 			// open bracket available
 			if (countLeft > 0) {
-				dfs(str.substring(1), subRes.concat(")"), countLeft - 1, maxLeft);
+				dfs(str.substring(1), subRes.concat(")"), countLeft-1, maxLeft);
 			}
 			dfs(str.substring(1), subRes, countLeft, maxLeft);
 		}
